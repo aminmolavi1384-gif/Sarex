@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>پنل مدیریت | Sarex Tech</title>
+
+    <link rel="stylesheet" href="../index.css">
+    <link rel="stylesheet" href="./admin.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+
+    <div class="background-glow">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <a href="../index.html" class="logo-container">
+                <span id="logo">S</span>
+                <span id="logo2">AREX</span>
+            </a>
+        </div>
+
+        <div class="header-center">
+            <h2>پنل مدیریت Sarex Tech</h2>
+            <p>مدیریت محصولات و سفارشات</p>
+        </div>
+
+        <div class="header-right">
+            <div class="admin-profile">
+                <img src="../icons/account_circle.svg" alt="admin">
+                <div>
+                    <h4 id="adminName">Amin</h4>
+                    <span>Super Admin</span>
+                </div>
+            </div>
+            <a href="../index.html" id="logout-btn">
+                <i class="ri-logout-box-r-line"></i>
+                خروج
+            </a>
+        </div>
+    </header>
+
+    <div class="admin-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="admin-avatar">
+                    <img src="../icons/account_circle.svg" alt="Admin">
+                </div>
+                <h3 id="sidebarAdminName">Amin</h3>
+                <span>Super Administrator</span>
+            </div>
+
+            <ul class="sidebar-menu">
+                <li class="active">
+                    <a href="./admin.html">
+                        <i class="ri-dashboard-fill"></i>
+                        <span>داشبورد</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./products/products.html">
+                        <i class="ri-shopping-bag-3-fill"></i>
+                        <span>محصولات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./orders/orders.html">
+                        <i class="ri-file-list-3-fill"></i>
+                        <span>سفارشات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./messages/messages.html">
+                        <i class="ri-message-2-fill"></i>
+                        <span>پیام‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="./settings/settings.html">
+                        <i class="ri-settings-3-fill"></i>
+                        <span>تنظیمات</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="dashboard-title">
+                <h1>داشبورد مدیریت</h1>
+                <p>به پنل مدیریت Sarex Tech خوش اومدی 👋</p>
+            </div>
+
+            <div class="dashboard-cards">
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="ri-shopping-cart-fill"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2 id="totalOrdersCount">0</h2>
+                        <p>سفارشات</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="ri-store-3-fill"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2 id="totalProductsCount">0</h2>
+                        <p>محصولات</p>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="card-icon">
+                        <i class="ri-money-dollar-circle-fill"></i>
+                    </div>
+                    <div class="card-info">
+                        <h2 id="totalEarnings">0M</h2>
+                        <p>درآمد</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quick-actions">
+                <a href="./products/products.html" class="quick-btn"><i class="ri-add-circle-fill"></i> مدیریت محصولات</a>
+                <a href="./orders/orders.html" class="quick-btn"><i class="ri-file-chart-fill"></i> گزارش سفارش‌ها</a>
+                <a href="./settings/settings.html" class="quick-btn"><i class="ri-settings-4-fill"></i> تنظیمات سیستم</a>
+            </div>
+
+            <section class="products-section">
+                <div class="section-header">
+                    <div>
+                        <h2>مدیریت محصولات</h2>
+                        <p>تمام پروژه‌ها و سرویس‌های سایت</p>
+                    </div>
+                    <div class="header-actions">
+                        <input type="text" placeholder="🔍 جستجوی محصول..." id="searchProduct">
+                        <a href="./products/products.html" class="add-btn">
+                            <i class="ri-add-line"></i> افزودن محصول
+                        </a>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>تصویر</th>
+                                <th>عنوان</th>
+                                <th>دسته</th>
+                                <th>قیمت</th>
+                                <th>وضعیت</th>
+                                <th>تاریخ</th>
+                                <th>عملیات</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="orders-section">
+                <div class="section-header">
+                    <div>
+                        <h2>آخرین سفارشات</h2>
+                        <p>سفارش‌های ثبت شده در سایت</p>
+                    </div>
+                </div>
+
+                <div class="orders-grid" id="ordersGridBody">
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="../site.js"></script>
+    <script src="./admin.js"></script>
+</body>
+</html>

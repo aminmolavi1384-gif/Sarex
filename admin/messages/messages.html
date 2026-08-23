@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت پیام‌ها و تیکت‌ها | Sarex Tech</title>
+    
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../admin.css">
+    <link rel="stylesheet" href="./messages.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <div class="background-glow">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <a href="../../index.html" class="logo-container">
+                <span id="logo">S</span>
+                <span id="logo2">AREX</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <h2>پنل مدیریت Sarex Tech</h2>
+            <p>مرکز پشتیبانی و پیام‌های دریافتی</p>
+        </div>
+        <div class="header-right">
+            <div class="admin-profile">
+                <img src="../../icons/account_circle.svg" alt="admin">
+                <div>
+                    <h4 id="adminName">Amin</h4>
+                    <span>Super Admin</span>
+                </div>
+            </div>
+            <a href="../admin.html" id="logout-btn"><i class="ri-home-4-line"></i> داشبورد</a>
+        </div>
+    </header>
+
+    <div class="admin-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="admin-avatar">
+                    <img src="../../icons/account_circle.svg" alt="Admin">
+                </div>
+                <h3 id="sidebarAdminName">Amin</h3>
+                <span>Super Administrator</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="../admin.html">
+                        <i class="ri-dashboard-fill"></i>
+                        <span>داشبورد</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../products/products.html">
+                        <i class="ri-shopping-bag-3-fill"></i>
+                        <span>محصولات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../orders/orders.html">
+                        <i class="ri-file-list-3-fill"></i>
+                        <span>سفارشات</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="./messages.html">
+                        <i class="ri-message-2-fill"></i>
+                        <span>پیام‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../settings/settings.html">
+                        <i class="ri-settings-3-fill"></i>
+                        <span>تنظیمات</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-content">
+            <div class="messages-container">
+                
+                <section class="messages-sidebar-list">
+                    <div class="msg-sidebar-header">
+                        <input type="text" placeholder="🔍 جستجوی فرستنده یا موضوع..." id="searchMessage" oninput="searchMessages(this.value)">
+                        
+                        <div class="msg-filters">
+                            <button class="msg-filter-btn active" onclick="filterMessages('all', this)">همه پیام‌ها</button>
+                            <button class="msg-filter-btn" onclick="filterMessages('unread', this)">خوانده نشده</button>
+                            <button class="msg-filter-btn" onclick="filterMessages('replied', this)">پاسخ داده شده</button>
+                        </div>
+                    </div>
+
+                    <div class="msg-list" id="msgList">
+                        </div>
+                </section>
+
+                <section class="chat-main-panel">
+                    <div id="noActiveChat" class="no-chat-selected">
+                        <i class="ri-message-3-line"></i>
+                        <h3>پیامی انتخاب نشده است</h3>
+                        <p>برای مشاهده متن پیام و ارسال پاسخ، یکی از تیکت‌های سمت راست را انتخاب کنید.</p>
+                    </div>
+
+                    <div id="activeChat" class="chat-container-inner" style="display: none;">
+                        <div class="chat-header">
+                            <div class="chat-user-meta">
+                                <div class="user-avatar-placeholder" id="chatInitials">ر‌م</div>
+                                <div>
+                                    <h4 id="chatSender">رضا محمدی</h4>
+                                    <span id="chatEmail">reza@gmail.com</span>
+                                </div>
+                            </div>
+                            <div class="chat-badge-group">
+                                <span class="chat-badge" id="chatSubject">سفارش سایت اختصاصی</span>
+                                <span class="chat-date" id="chatDate">۱۴۰۵/۰۴/۱۵</span>
+                            </div>
+                        </div>
+
+                        <div class="chat-body" id="chatBody">
+                            </div>
+
+                        <div class="chat-footer">
+                            <div class="quick-replies">
+                                <span>پاسخ‌های آماده:</span>
+                                <button onclick="useQuickReply(1)">درخواست شما تایید شد</button>
+                                <button onclick="useQuickReply(2)">اطلاعات شما ناقص است</button>
+                                <button onclick="useQuickReply(3)">به زودی با شما تماس می‌گیریم</button>
+                            </div>
+                            <div class="chat-input-wrapper">
+                                <textarea id="replyTextarea" placeholder="پاسخ خود را بنویسید..."></textarea>
+                                <button class="send-reply-btn" onclick="sendAdminReply()">
+                                    <i class="ri-send-plane-2-line"></i> ارسال پاسخ
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+            </div>
+        </main>
+    </div>
+
+    <script src="../../site.js"></script>
+    <script src="./messages.js"></script>
+</body>
+</html>

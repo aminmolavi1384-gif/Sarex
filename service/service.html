@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <title>پروژه‌های آماده و سرویس‌ها - Sarex Tech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+
+    <style>
+        /* جلوگیری از تداخل استایل #main موجود در index.css */
+        #main.services-page {
+            width: 100%;
+            height: auto;
+            min-height: 100vh;
+            display: block;
+            overflow: visible;
+            position: relative;
+            padding: 170px 20px 120px;
+            box-sizing: border-box;
+            z-index: 1;
+        }
+
+        #main.services-page #matrix-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .services-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        .services-page .section-title {
+            color: var(--text-main);
+            font-size: 2.5rem;
+            margin: 0 0 12px;
+            text-shadow: 0 0 15px rgba(0, 242, 254, 0.6);
+            line-height: 1.5;
+        }
+
+        .services-page .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin: 0 0 50px;
+            line-height: 1.8;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 30px;
+            width: 100%;
+            align-items: stretch;
+        }
+
+        .service-card-dynamic {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            min-width: 0;
+            min-height: 460px;
+            background: var(--bg-glass);
+            border: 1px solid var(--border-neon);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            text-align: right;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card-dynamic:hover {
+            transform: translateY(-8px);
+            border-color: var(--neon-green);
+            box-shadow: 0 15px 35px rgba(57, 255, 20, 0.18);
+        }
+
+        .service-image-holder {
+            position: relative;
+            width: 100%;
+            height: 210px;
+            flex-shrink: 0;
+            background-color: rgba(10, 20, 47, 0.5);
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.4s ease;
+        }
+
+        .service-card-dynamic:hover .service-image-holder {
+            transform: scale(1.03);
+        }
+
+        .service-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: rgba(4, 0, 20, 0.75);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .service-image-holder:hover .service-overlay {
+            opacity: 1;
+        }
+
+        .buy-service-btn {
+            padding: 10px 22px;
+            border: 1px solid var(--neon-green);
+            border-radius: 8px;
+            background: rgba(57, 255, 20, 0.1);
+            color: #fff;
+            text-decoration: none;
+            font-family: 'vazir', sans-serif;
+            font-size: 0.95rem;
+            box-shadow: 0 0 10px rgba(57, 255, 20, 0.3);
+            transition: all 0.3s ease;
+        }
+
+        .buy-service-btn:hover {
+            background: var(--neon-green);
+            color: #040014;
+            box-shadow: 0 0 20px var(--neon-green);
+        }
+
+        .service-info {
+            display: flex;
+            flex-direction: column;
+            flex-grow: 1;
+            padding: 22px;
+            box-sizing: border-box;
+        }
+
+        .service-heading-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 14px;
+        }
+
+        .service-title-text {
+            flex: 1;
+            margin: 0;
+            color: var(--text-main);
+            font-size: 1.2rem;
+            line-height: 1.8;
+        }
+
+        .service-badge {
+            flex-shrink: 0;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 5px 12px;
+            border: 1px solid rgba(189, 0, 255, 0.4);
+            border-radius: 999px;
+            background: rgba(189, 0, 255, 0.12);
+            color: var(--neon-purple);
+            font-family: 'vazir', sans-serif;
+            font-size: 0.75rem;
+            line-height: 1.6;
+            white-space: nowrap;
+            box-shadow: 0 0 8px rgba(189, 0, 255, 0.08);
+        }
+
+        .service-description {
+            flex-grow: 1;
+            margin: 0 0 22px;
+            color: var(--text-muted);
+            font-size: 0.92rem;
+            line-height: 1.9;
+        }
+
+        .service-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 10px;
+            margin-top: auto;
+            padding-top: 15px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-price-label {
+            color: var(--text-muted);
+            font-size: 0.82rem;
+            font-family: 'vazir', sans-serif;
+        }
+
+        .service-price {
+            color: var(--neon-cyan);
+            font-size: 1rem;
+            font-weight: bold;
+            font-family: 'vazir', sans-serif;
+            text-shadow: 0 0 8px rgba(0, 242, 254, 0.2);
+        }
+
+        .status-message {
+            grid-column: 1 / -1;
+            padding: 40px 20px;
+            color: var(--text-muted);
+            font-family: 'vazir', sans-serif;
+            font-size: 1rem;
+        }
+
+        .status-message.error {
+            color: #ff3a3a;
+            text-shadow: 0 0 10px rgba(255, 58, 58, 0.3);
+        }
+
+        /*
+         * هدر ثابت می‌ماند، اما محتوای صفحه با padding کافی
+         * از زیر هدر شروع می‌شود.
+         */
+        #main-header {
+            z-index: 100;
+        }
+
+        @media (max-width: 1000px) {
+            #main.services-page {
+                padding-top: 175px;
+            }
+
+            .services-grid {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            #main.services-page {
+                padding-top: 220px;
+                padding-bottom: 90px;
+            }
+
+            .services-page .section-title {
+                font-size: 1.8rem;
+            }
+
+            .services-page .section-subtitle {
+                font-size: 0.9rem;
+                margin-bottom: 35px;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .service-card-dynamic {
+                min-height: 430px;
+            }
+
+            .service-image-holder {
+                height: 200px;
+            }
+
+            .service-heading-row {
+                align-items: center;
+            }
+
+            .service-title-text {
+                font-size: 1.05rem;
+            }
+
+            .service-badge {
+                font-size: 0.7rem;
+                padding: 4px 10px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header id="main-header">
+    <a href="../index.html" class="logo-container">
+        <span id="logo">S</span>
+        <span id="logo2">AREX</span>
+    </a>
+
+    <nav class="nav-links">
+        <a id="head1" href="../projects/projects.html">پروژه ها</a>
+        <a id="head2" href="../service/service.html" class="active">سرویس ها</a>
+        <a id="head3" href="../index.html#about">درباره ما</a>
+        <a id="head4" href="../index.html#contact">تماس با ما</a>
+    </nav>
+
+    <div class="header-actions">
+        <a id="login" href="../login/login.html">
+            <img id="loginic" src="../icons/login.svg" alt="">
+            ورود/ثبت نام
+        </a>
+
+        <a id="notif" href="">
+            <img src="../icons/notifications.svg" alt="">
+        </a>
+    </div>
+</header>
+
+<div class="menu-toggle-btn" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<div class="right-sidebar" id="sidebar">
+    <div class="sidebar-title">منوی دسترسی سریع</div>
+
+    <ul class="sidebar-links">
+        <li><a href="../projects/projects.html">پروژه‌ها</a></li>
+        <li><a href="../service/service.html">سرویس‌ها</a></li>
+        <li><a href="../index.html#about">درباره ما</a></li>
+        <li><a href="../index.html#contact">تماس با ما</a></li>
+        <li>
+            <a href="../form/form.html">
+                <img src="../icons/support.svg" alt="">
+                همکاری با ما
+            </a>
+        </li>
+    </ul>
+</div>
+
+<main id="main" class="services-page">
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="services-container">
+        <h1 class="section-title">پروژه‌های آماده و سورس‌کدها</h1>
+
+        <p class="section-subtitle">
+            سیستم‌های از پیش توسعه‌یافته، آماده تحویل فوری و شخصی‌سازی
+        </p>
+
+        <div class="services-grid" id="services-wrapper">
+            <div class="status-message">
+                در حال بارگذاری کدهای آماده...
+            </div>
+        </div>
+    </div>
+</main>
+
+<script>
+const menuToggle = document.getElementById('menu-toggle');
+const sidebar = document.getElementById('sidebar');
+const mainHeader = document.getElementById('main-header');
+
+if (menuToggle && sidebar && mainHeader) {
+    menuToggle.addEventListener('click', () => {
+        menuToggle.classList.toggle('open');
+        sidebar.classList.toggle('active');
+        mainHeader.classList.toggle('menu-open');
+    });
+
+    sidebar.querySelectorAll('.sidebar-links a').forEach(link => {
+        link.addEventListener('click', () => {
+            menuToggle.classList.remove('open');
+            sidebar.classList.remove('active');
+            mainHeader.classList.remove('menu-open');
+        });
+    });
+}
+
+const canvas = document.getElementById('matrix-canvas');
+
+if (canvas) {
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const chars = "01XØΔ79Z52W81010101";
+    const fontSize = 15;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+
+    function initDrops() {
+        columns = canvas.width / fontSize;
+        drops = [];
+
+        for (let x = 0; x < columns; x++) {
+            drops[x] = 1;
+        }
+    }
+
+    initDrops();
+    window.addEventListener('resize', initDrops);
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(4, 0, 20, 0.06)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#39ff14';
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(
+                Math.floor(Math.random() * chars.length)
+            );
+
+            ctx.fillText(
+                text,
+                i * fontSize,
+                drops[i] * fontSize
+            );
+
+            if (
+                drops[i] * fontSize > canvas.height &&
+                Math.random() > 0.975
+            ) {
+                drops[i] = 0;
+            }
+
+            drops[i]++;
+        }
+    }
+
+    let lastTime = 0;
+    const fps = 30;
+    const nextFrame = 1000 / fps;
+
+    function updateMatrix(timestamp) {
+        if (!lastTime) {
+            lastTime = timestamp;
+        }
+
+        const elapsed = timestamp - lastTime;
+
+        if (elapsed > nextFrame) {
+            drawMatrix();
+            lastTime = timestamp - (elapsed % nextFrame);
+        }
+
+        requestAnimationFrame(updateMatrix);
+    }
+
+    requestAnimationFrame(updateMatrix);
+}
+
+function fetchAndRenderServices() {
+    const wrapper = document.getElementById('services-wrapper');
+
+    if (!wrapper) {
+        return;
+    }
+
+    try {
+        let localProducts = JSON.parse(
+            localStorage.getItem('sarex_products')
+        ) || [];
+
+        if (!Array.isArray(localProducts)) {
+            localProducts = [];
+        }
+
+        if (localProducts.length === 0) {
+            localProducts = [
+                {
+                    title: 'سایت شرکتی مدرن',
+                    category: 'سورس‌کد',
+                    desc: 'وب‌سایت شرکتی مدرن، ریسپانسیو و قابل شخصی‌سازی.',
+                    price: '2500000',
+                    image: 'images/default-service.jpg',
+                    demoUrl: '#'
+                }
+            ];
+
+            localStorage.setItem(
+                'sarex_products',
+                JSON.stringify(localProducts)
+            );
+        }
+
+        wrapper.innerHTML = '';
+
+        localProducts.forEach(service => {
+            const card = document.createElement('div');
+            card.className = 'service-card-dynamic';
+
+            const finalImageUrl = service.image
+                ? service.image
+                : 'images/default-service.jpg';
+
+            let priceDisplay = 'رایگان / متن‌باز';
+
+            if (service.price) {
+                const cleanPrice = String(service.price).replace(/,/g, '');
+
+                if (!isNaN(cleanPrice) && Number(cleanPrice) > 0) {
+                    priceDisplay =
+                        Number(cleanPrice).toLocaleString('fa-IR') + ' تومان';
+                } else {
+                    priceDisplay = service.price;
+                }
+            }
+
+            card.innerHTML = `
+                <div class="service-image-holder" style="background-image: url('${finalImageUrl}');">
+                    <div class="service-overlay">
+                        <a
+                            href="${service.demoUrl || service.actionUrl || '#'}"
+                            class="buy-service-btn"
+                            target="_blank"
+                        >
+                            مشاهده و دریافت
+                        </a>
+                    </div>
+                </div>
+
+                <div class="service-info">
+                    <div class="service-heading-row">
+                        <h3 class="service-title-text">
+                            ${service.title || 'بدون عنوان'}
+                        </h3>
+
+                        <span class="service-badge">
+                            ${service.category || 'سورس‌کد'}
+                        </span>
+                    </div>
+
+                    <p class="service-description">
+                        ${service.desc || 'توضیحات ثبت نشده است.'}
+                    </p>
+
+                    <div class="service-footer">
+                        <span class="service-price-label">
+                            قیمت محصول:
+                        </span>
+
+                        <span class="service-price">
+                            ${priceDisplay}
+                        </span>
+                    </div>
+                </div>
+            `;
+
+            wrapper.appendChild(card);
+        });
+
+    } catch (error) {
+        console.error(
+            'Error loading services from LocalStorage:',
+            error
+        );
+
+        wrapper.innerHTML = `
+            <div class="status-message error">
+                ⚠️ خطا در بارگذاری سورس‌کدها! اطلاعات ذخیره‌شده محلی را بررسی کنید.
+            </div>
+        `;
+    }
+}
+
+fetchAndRenderServices();
+</script>
+
+<script src="../site.js"></script>
+<script src="./service.js"></script>
+
+</body>
+</html>

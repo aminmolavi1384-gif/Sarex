@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ارتباط با ما - Sarex Tech</title>
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <header>
+        <a href="../index.html" class="logo-container"><span id="logo">S</span><span id="logo2">AREX</span></a>
+        <nav class="nav-links">
+            <a href="../projects/projects.html">پروژه‌ها</a>
+            <a href="../service/service.html">سرویس‌ها</a>
+            <a href="../index.html#about">درباره ما</a>
+            <a href="../index.html#contact">تماس با ما</a>
+        </nav>
+        <div class="header-actions"><a id="login" href="../login/login.html"><img id="loginic" src="../icons/login.svg" alt="">ورود/ثبت نام</a></div>
+    </header>
+    <main id="main" class="login-page">
+        <canvas id="matrix-canvas"></canvas>
+        <div class="login-container">
+            <h2 class="section-title">درخواست همکاری</h2>
+            <form id="contact-form" class="login-form">
+                <div class="input-group"><label for="sender">نام و نام خانوادگی</label><input id="sender" type="text" required></div>
+                <div class="input-group"><label for="email">ایمیل</label><input id="email" type="email" required></div>
+                <div class="input-group"><label for="subject">موضوع</label><input id="subject" type="text" required></div>
+                <div class="input-group"><label for="message">توضیحات درخواست</label><textarea id="message" required rows="5"></textarea></div>
+                <button type="submit" class="login-btn">ارسال درخواست</button>
+            </form>
+        </div>
+    </main>
+    <script src="../site.js"></script>
+    <script>
+        document.getElementById('contact-form').addEventListener('submit', async (event) => {
+            event.preventDefault();
+            try {
+                await SarexApi.request('/api/messages', { method: 'POST', body: { sender: document.getElementById('sender').value, email: document.getElementById('email').value, subject: document.getElementById('subject').value, message: document.getElementById('message').value } });
+                event.currentTarget.reset();
+                alert('درخواست شما ثبت شد. به‌زودی پاسخ می‌دهیم.');
+            } catch (error) {
+                alert(error.message);
+            }
+        });
+    </script>
+</body>
+</html>

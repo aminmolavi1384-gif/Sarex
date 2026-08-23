@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <title>ثبت نام در حساب کاربری - Sarex Tech</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../index.css">
+</head>
+<body>
+    <header>
+        <a href="index.html" class="logo-container">
+            <span id="logo">S</span>
+            <span id="logo2">AREX</span>
+        </a>
+        
+        <nav class="nav-links">
+            <a id="head1" href="../projects/projects.html">پروژه ها</a>
+            <a id="head2" href="../service/service.html">سرویس ها</a>
+            <a id="head3" href="../index.html#about">درباره ما</a>
+            <a id="head4" href="../index.html#contact">تماس با ما</a>
+        </nav>
+
+        <div class="header-actions">
+            <a id="login" href="../login/login.html" class="active"><img id="loginic" src="../icons/login.svg" alt="">ورود/ثبت نام</a>
+            <a id="notif" href=""><img src="../icons/notifications.svg" alt=""></a>
+        </div>
+    </header>
+
+    <main id="main" class="login-page">
+        <canvas id="matrix-canvas"></canvas>
+        
+        <div class="login-container">
+            <h2 class="section-title">ایجاد حساب کاربری</h2>
+            
+            <form id="register-form" class="login-form">
+                <div class="input-group">
+                    <label for="fullname">نام و نام خانوادگی</label>
+                    <input type="text" id="fullname" placeholder="نام خود را وارد کنید" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="username">نام کاربری</label>
+                    <input type="text" id="username" placeholder="نام کاربری (لاتین)" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="phone">شماره همراه</label>
+                    <input type="tel" id="phone" placeholder="۰۹۱۲۳۴۵۶۷۸۹" style="direction: ltr; text-align: right;" maxlength="11" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="email">ایمیل</label>
+                    <input type="email" id="email" placeholder="ایمیل خود را وارد کنید" style="direction: ltr; text-align: right;" required>
+                </div>
+
+                <div class="input-group">
+    <label>تاریخ تولد</label>
+    <div class="birthdate-container">
+        
+        <select id="birth-day" name="birth_day" required>
+            <option value="" disabled selected hidden>روز</option>
+            </select>
+
+        <select id="birth-month" name="birth_month" required>
+            <option value="" disabled selected hidden>ماه</option>
+            <option value="1">فروردین</option>
+            <option value="2">اردیبهشت</option>
+            <option value="3">خرداد</option>
+            <option value="4">تیر</option>
+            <option value="5">مرداد</option>
+            <option value="6">شهریور</option>
+            <option value="7">مهر</option>
+            <option value="8">آبان</option>
+            <option value="9">آذر</option>
+            <option value="10">دی</option>
+            <option value="11">بهمن</option>
+            <option value="12">اسفند</option>
+        </select>
+
+        <select id="birth-year" name="birth_year" required>
+            <option value="" disabled selected hidden>سال</option>
+            </select>
+
+    </div>
+</div>
+
+                <div class="input-group">
+    <div class="input-group">
+    <label for="gender">جنسیت</label>
+    <select id="gender" name="gender" required>
+        <option value="" disabled selected hidden>جنسیت خود را انتخاب کنید</option>
+        <option value="male">مرد</option>
+        <option value="female">زن</option>
+    </select>
+</div>
+                
+                <div class="input-group">
+                    <label for="password">رمز عبور</label>
+                    <input type="password" id="password" placeholder="رمز عبور خود را وارد کنید" required>
+                </div>
+
+                <div class="input-group">
+                    <label for="confirm-password">تکرار رمز عبور</label>
+                    <input type="password" id="confirm-password" placeholder="رمز عبور را مجدداً وارد کنید" required>
+                </div>
+
+                <button type="submit" class="login-btn">تأیید و ثبت نام</button>
+            </form>
+
+            <div class="register-link">
+                <p>قبلاً اکانت ساخته‌اید؟ <a href="../login/login.html">وارد شوید</a></p>
+            </div>
+        </div>
+    </main>
+
+    <footer class="cyber-footer">
+        <div class="footer-container">
+            <div class="footer-bottom">
+                <p class="copyright-fa">کلیه حقوق مادی و معنوی این وب‌سایت محفوظ و متعلق به مجموعه Sarex Tech می‌باشد.</p>
+                <p class="copyright-en">© 2026 Sarex Tech Smart Development. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <aside class="right-sidebar">
+        <div class="sidebar-title">Sarex Tech</div>
+        <ul class="sidebar-links">
+            <li><a href="../index.html"><img src="../icons/dash.svg" alt=""> خانه</a></li>
+            <li><a href="../projects/projects.html"><img src="../icons/order.svg" alt=""> پروژه‌ها</a></li>
+            <li><a href="../service/service.html"><img src="../icons/order.svg" alt=""> سرویس ها</a></li> 
+            <li><a href="../index.html#about"><img src="../icons/support.svg" alt=""> درباره ما</a></li>
+            <li><a href="../index.html#contact"><img src="../icons/blog.svg" alt=""> تماس با ما</a></li>
+            <li><a href="../form/form.html"><img src="../icons/support.svg" alt=""> همکاری با ما</a></li>
+        </ul>
+    </aside>
+
+    <div class="menu-toggle-btn">
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <script>
+    
+    const logoContainer = document.querySelector('.logo-container');
+    const menuToggleBtn = document.querySelector('.menu-toggle-btn');
+    const sidebar = document.querySelector('.right-sidebar');
+    const header = document.querySelector('header');
+
+    function toggleMenu(e) {
+        e.preventDefault();
+        sidebar.classList.toggle('active');
+        logoContainer.classList.toggle('open');
+        menuToggleBtn.classList.toggle('open');
+        header.classList.toggle('menu-open');
+    }
+
+    menuToggleBtn.addEventListener('click', toggleMenu);
+    logoContainer.addEventListener('click', toggleMenu);
+
+    
+    const canvas = document.getElementById('matrix-canvas');
+    const ctx = canvas.getContext('2d');
+
+    function resizeCanvas() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    const chars = "01XØΔ79Z52W81010101";
+    const fontSize = 15;
+    let columns = canvas.width / fontSize;
+    let drops = [];
+
+    function initDrops() {
+        columns = canvas.width / fontSize;
+        drops = [];
+        for (let x = 0; x < columns; x++) drops[x] = 1; 
+    }
+    initDrops();
+    window.addEventListener('resize', initDrops);
+
+    function drawMatrix() {
+        ctx.fillStyle = 'rgba(4, 8, 20, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+        ctx.fillStyle = '#00f2fe';
+        ctx.font = fontSize + 'px monospace';
+        
+        for (let i = 0; i < drops.length; i++) {
+            const text = chars.charAt(Math.floor(Math.random() * chars.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+            
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+    let lastTime = 0;
+    const fps = 30;
+    const nextFrame = 1000 / fps;
+
+    function updateMatrix(timestamp) {
+        if (!lastTime) lastTime = timestamp;
+        const elapsed = timestamp - lastTime;
+
+        if (elapsed > nextFrame) {
+            drawMatrix();
+            lastTime = timestamp - (elapsed % nextFrame);
+        }
+        requestAnimationFrame(updateMatrix);
+    }
+    requestAnimationFrame(updateMatrix);
+
+    
+    document.getElementById('register-form').addEventListener('submit', async function(e) {
+        e.preventDefault();
+        const password = document.getElementById('password').value;
+        const confirmPassword = document.getElementById('confirm-password').value;
+
+        if (password !== confirmPassword) {
+            alert('رمز عبور و تکرار آن همخوانی ندارند!');
+            return;
+        }
+        try {
+            const data = await SarexApi.request('/api/auth/register', {
+                method: 'POST',
+                body: {
+                    fullname: document.getElementById('fullname').value,
+                    username: document.getElementById('username').value,
+                    phone: document.getElementById('phone').value,
+                    email: document.getElementById('email').value,
+                    birthDay: document.getElementById('birth-day').value,
+                    birthMonth: document.getElementById('birth-month').value,
+                    birthYear: document.getElementById('birth-year').value,
+                    gender: document.getElementById('gender').value,
+                    password
+                }
+            });
+            SarexApi.setSession(data);
+            alert('ثبت‌نام با موفقیت انجام شد.');
+            window.location.href = '../index.html';
+        } catch (error) {
+            alert(error.message);
+        }
+    });
+    
+const daySelect = document.getElementById('birth-day');
+for (let i = 1; i <= 31; i++) {
+    let opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    daySelect.appendChild(opt);
+}
+
+
+const yearSelect = document.getElementById('birth-year');
+for (let i = 1395; i >= 1340; i--) {
+    let opt = document.createElement('option');
+    opt.value = i;
+    opt.innerHTML = i;
+    yearSelect.appendChild(opt);
+}
+    </script>
+    <script src="../site.js"></script>
+</body>
+</html>

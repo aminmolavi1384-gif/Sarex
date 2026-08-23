@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>مدیریت سفارشات | Sarex Tech</title>
+    
+    <link rel="stylesheet" href="../../index.css">
+    <link rel="stylesheet" href="../admin.css">
+    <link rel="stylesheet" href="./orders.css">
+
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+</head>
+
+<body>
+    <div class="background-glow">
+        <div class="circle one"></div>
+        <div class="circle two"></div>
+        <div class="circle three"></div>
+    </div>
+
+    <header class="admin-header">
+        <div class="header-left">
+            <a href="../../index.html" class="logo-container">
+                <span id="logo">S</span>
+                <span id="logo2">AREX</span>
+            </a>
+        </div>
+        <div class="header-center">
+            <h2>پنل مدیریت Sarex Tech</h2>
+            <p>بخش مدیریت و بررسی سفارشات کاربران</p>
+        </div>
+        <div class="header-right">
+            <div class="admin-profile">
+                <img src="../../icons/account_circle.svg" alt="admin">
+                <div>
+                    <h4 id="adminName">Amin</h4>
+                    <span>Super Admin</span>
+                </div>
+            </div>
+            <a href="../admin.html" id="logout-btn"><i class="ri-home-4-line"></i> داشبورد</a>
+        </div>
+    </header>
+
+    <div class="admin-wrapper">
+        
+        <aside class="sidebar">
+            <div class="sidebar-top">
+                <div class="admin-avatar">
+                    <img src="../../icons/account_circle.svg" alt="Admin">
+                </div>
+                <h3 id="sidebarAdminName">Amin</h3>
+                <span>Super Administrator</span>
+            </div>
+            <ul class="sidebar-menu">
+                <li>
+                    <a href="../admin.html">
+                        <i class="ri-dashboard-fill"></i>
+                        <span>داشبورد</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../products/products.html">
+                        <i class="ri-shopping-bag-3-fill"></i>
+                        <span>محصولات</span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="./orders.html">
+                        <i class="ri-file-list-3-fill"></i>
+                        <span>سفارشات</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../messages/messages.html">
+                        <i class="ri-message-2-fill"></i>
+                        <span>پیام‌ها</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="../settings/settings.html">
+                        <i class="ri-settings-3-fill"></i>
+                        <span>تنظیمات</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+
+        <main class="dashboard-content">
+            
+            <section class="orders-section">
+                <div class="section-header">
+                    <div>
+                        <h2>سفارشات فعال و در جریان</h2>
+                        <p>تأیید اولیه، شروع ساخت پروژه یا لغو قبل از تکمیل</p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="product-table">
+                        <thead>
+                            <tr>
+                                <th>کد سفارش</th>
+                                <th>خریدار</th>
+                                <th>محصول/سرویس</th>
+                                <th>مبلغ</th>
+                                <th>وضعیت پروژه</th>
+                                <th>تاریخ ثبت</th>
+                                <th>توضیحات ادمین (Reason)</th>
+                                <th>عملیات بررسی سفارش</th>
+                            </tr>
+                        </thead>
+                        <tbody id="activeOrdersTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section class="orders-section" style="margin-top: 50px;">
+                <div class="section-header">
+                    <div>
+                        <h2>بایگانی و تاریخچه سفارش‌ها (History)</h2>
+                        <p>آرشیو سفارش‌های تکمیل‌شده نهایی یا لغو شده با امکان حذف کامل</p>
+                    </div>
+                </div>
+
+                <div class="table-container">
+                    <table class="product-table" style="border-color: rgba(0, 242, 254, 0.15);">
+                        <thead>
+                            <tr>
+                                <th>کد سفارش</th>
+                                <th>خریدار</th>
+                                <th>محصول/سرویس</th>
+                                <th>مبلغ پرداختی</th>
+                                <th>وضعیت نهایی</th>
+                                <th>تاریخ ثبت</th>
+                                <th>دلیل آرشیو (Reason)</th>
+                                <th>عملیات دیتابیس</th>
+                            </tr>
+                        </thead>
+                        <tbody id="historyOrdersTableBody">
+                            </tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div class="modal-overlay" id="decisionModal">
+        <div class="modal-card">
+            <h3 id="modalTitle"><i class="ri-error-warning-fill"></i> ثبت وضعیت سفارش</h3>
+            <p id="modalDescription">لطفاً توضیحات خود را برای این مرحله بنویسید:</p>
+            <textarea id="decisionReasonInput" placeholder="توضیحات یا دلیل (Reason) این وضعیت را بنویسید..."></textarea>
+            <div class="modal-actions">
+                <button id="modalConfirmBtn" class="confirm-btn">ثبت وضعیت</button>
+                <button class="close-modal-btn" onclick="closeDecisionModal()">انصراف</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../../site.js"></script>
+    <script src="./orders.js"></script>
+</body>
+</html>

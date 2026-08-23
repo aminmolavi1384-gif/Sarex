@@ -1,0 +1,584 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <title>طراحی و فریلنسینگ برای شما ...</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+
+<header>
+    <a href="#" class="logo-container">
+        <span id="logo">S</span>
+        <span id="logo2">AREX</span>
+    </a>
+
+    <nav class="nav-links">
+        <a id="head1" href="projects/projects.html">پروژه ها</a>
+        <a id="head2" href="service/service.html">سرویس ها</a>
+        <a id="head3" href="#about">درباره ما</a>
+        <a id="head4" href="#contact">تماس با ما</a>
+    </nav>
+
+    <div class="header-actions">
+        <a id="login" href="login/login.html">
+            <img id="loginic" src="icons/login.svg" alt="">
+            ورود/ثبت نام
+        </a>
+        <a id="notif" href="">
+            <img src="icons/notifications.svg" alt="">
+        </a>
+    </div>
+</header>
+
+<main id="main">
+    <canvas id="matrix-canvas"></canvas>
+
+    <div class="hero-content">
+        <h1 class="main-title">Smart Development</h1>
+        <h2 id="mid">Create the future...</h2>
+        <p id="down">توسعه هوشمند، خلق آینده</p>
+    </div>
+</main>
+
+<section class="cyber-section team-section" id="about">
+    <div class="section-glow"></div>
+
+    <div class="container">
+        <h2 class="section-title">درباره ما</h2>
+
+        <div class="team-content-wrapper">
+            <h3 class="team-subtitle">تلاقی خلاقیت بی‌پایان و ساختار مهندسی‌شده</h3>
+
+            <p class="team-motto">
+                ما ایده‌های پیچیده و آرمان‌گرایانه شما را به کدهای بهینه، پایدار و مقیاس‌پذیر تبدیل می‌کنیم.
+                تمرکز اصلی این تیم روی خلق رابط‌های کاربری چشم‌نواز، توسعه زیرساخت‌های امن و پیاده‌سازی
+                استانداردهای مدرن وب در کلاس جهانی است تا کسب‌وکار شما در دنیای دیجیتال یک گام جلوتر از آینده حرکت کند.
+            </p>
+        </div>
+    </div>
+</section>
+
+<section class="cyber-section services-section">
+    <div class="container">
+        <h2 class="section-title">سرویس‌های ما</h2>
+
+        <div class="services-grid">
+
+            <div class="service-card">
+                <div class="card-glow"></div>
+                <div class="service-icon">⚡</div>
+                <h3>توسعه فرانت‌اند و رابط کاربری</h3>
+                <p>خلق وب‌سایت‌های مدرن، انیمیشنی، کاملاً ریسپانسیو و شیک با بالاترین سرعت لود.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="card-glow"></div>
+                <div class="service-icon">🔒</div>
+                <h3>توسعه بک‌اند و امنیت</h3>
+                <p>طراحی سیستم‌های مدیریت داده پیچیده، APIهای پایدار و پیاده‌سازی پروتکل‌های امنیتی.</p>
+            </div>
+
+            <div class="service-card">
+                <div class="card-glow"></div>
+                <div class="service-icon">🛠️</div>
+                <h3>پشتیبانی و بهینه‌سازی</h3>
+                <p>رفع باگ، افزایش سرعت، سئو فنی و مانیتورینگ مداوم پروژه‌ها پس از تحویل.</p>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="cyber-section server-section">
+    <div class="container">
+        <h2 class="section-title">وضعیت سرور</h2>
+
+        <div class="server-console-box">
+            <div class="console-header">
+                <div class="console-dots">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+
+                <div class="console-title-text">
+                    MAIN SERVER CORE MATRIX
+                </div>
+            </div>
+
+            <div class="server-grid">
+
+                <div class="stat-box">
+                    <span class="stat-label">سرعت پاسخگویی (PING)</span>
+                    <div class="stat-value" id="stat-ping">24 ms</div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">بار پردازنده (CPU Usage)</span>
+                    <div class="stat-value" id="stat-cpu">14%</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="bar-cpu" style="width: 14%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">حافظه موقت (RAM)</span>
+                    <div class="stat-value" id="stat-ram">4.2 GB / 16 GB</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="bar-ram" style="width: 26%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">دمای هسته (Core Temp)</span>
+                    <div class="stat-value" id="stat-temp">42°C</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="bar-temp" style="width: 42%"></div>
+                    </div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">ترافیک شبکه (Bandwidth)</span>
+                    <div class="stat-value" id="stat-network">124 Mbps</div>
+                </div>
+
+                <div class="stat-box">
+                    <span class="stat-label">پایگاه داده (Database Sync)</span>
+                    <div class="stat-value database-status">SYNCHRONIZED</div>
+                </div>
+
+                <div class="stat-box full-width-stat">
+                    <span class="stat-label">سپر دفاعی (DDoS Protection)</span>
+                    <div class="stat-value secure-status">
+                        PROXIED / MULTI-LAYER MITIGATION ACTIVE
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="cyber-section channels-section">
+    <div class="container">
+        <h2 class="section-title">پل‌های ارتباطی</h2>
+
+        <div class="channels-container">
+
+            <a href="#" target="_blank" class="bot-card-link">
+                <div class="bot-premium-card">
+
+                    <div class="bot-icon">
+                        <svg width="50" height="50" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                stroke="#0088cc"
+                                stroke-width="1.5"
+                            />
+                            <path
+                                d="M17.5 7.5L6.5 11.5L10 13.5L14.5 10.5L11.5 14.5L15.5 17.5L17.5 7.5Z"
+                                fill="#0088cc"
+                                stroke="#0088cc"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <div class="bot-info">
+                        <h3>ربات هوشمند تلگرام (Telegram Bot)</h3>
+                        <p>
+                            برای ثبت سریع سفارش، استعلام آنی وضعیت پروژه و ارتباط مستقیم با بخش فنی کلیک کنید.
+                        </p>
+                    </div>
+
+                    <div class="bot-badge">ONLINE</div>
+                </div>
+            </a>
+
+            <div class="social-grid">
+
+                <a target="_blank" href="" class="social-item-card insta-card">
+                    <div class="social-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect
+                                x="2"
+                                y="2"
+                                width="20"
+                                height="20"
+                                rx="5"
+                                stroke="#e1306c"
+                                stroke-width="1.5"
+                            />
+                            <circle
+                                cx="12"
+                                cy="12"
+                                r="4"
+                                stroke="#e1306c"
+                                stroke-width="1.5"
+                            />
+                            <circle
+                                cx="18"
+                                cy="6"
+                                r="1"
+                                fill="#e1306c"
+                            />
+                        </svg>
+                    </div>
+
+                    <h4>اینستاگرام</h4>
+                    <span>Instagram</span>
+                </a>
+
+                <a
+                    target="_blank"
+                    href="https://mail.google.com/mail/?view=cm&fs=1&to=info@Sarex-Tech.ir&su=پشتیبانی%20Sarex%20Tech"
+                    class="social-item-card gmail-card"
+                >
+                    <div class="social-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <rect
+                                x="2"
+                                y="4"
+                                width="20"
+                                height="16"
+                                rx="3"
+                                stroke="#ea4335"
+                                stroke-width="1.5"
+                            />
+                            <path
+                                d="M22 7L12 13L2 7"
+                                stroke="#ea4335"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <h4>جیمیل</h4>
+                    <span>Gmail</span>
+                </a>
+
+                <a
+                    target="_blank"
+                    href="https://t.me/Sarex_Tech"
+                    class="social-item-card rubika-card"
+                >
+                    <div class="social-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M21 5L2 12.5L9 15M21 5L16 20L9 15M21 5L9 15"
+                                stroke="#0088cc"
+                                stroke-width="1.5"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M9 15V19.5L12 17"
+                                stroke="#0088cc"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <h4>کانال تلگرام</h4>
+                    <span>Telegram Channel</span>
+                </a>
+
+                <a
+                    target="_blank"
+                    href="https://ble.ir/SarexTech"
+                    class="social-item-card bale-card"
+                >
+                    <div class="social-icon">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 13.9113 3.59599 15.6834 4.6138 17.1429L3.5 20.5L6.94246 19.5311C8.38883 20.4705 10.1296 21 12 21Z"
+                                stroke="#5bb276"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            />
+                            <path
+                                d="M8 11.5C8 11.5 9.5 13 11 13C12.5 13 16 9.5 16 9.5"
+                                stroke="#5bb276"
+                                stroke-width="1.5"
+                                stroke-linecap="round"
+                            />
+                        </svg>
+                    </div>
+
+                    <h4>بله</h4>
+                    <span>Bale</span>
+                </a>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer class="cyber-footer" id="contact">
+    <div class="footer-container">
+        <div class="footer-bottom">
+            <p class="copyright-fa">
+                کلیه حقوق مادی و معنوی این وب‌سایت محفوظ و متعلق به مجموعه Sarex Tech می‌باشد.
+            </p>
+
+            <p class="copyright-en">
+                © 2026 Sarex Tech Smart Development. All Rights Reserved.
+            </p>
+        </div>
+    </div>
+</footer>
+
+<aside class="right-sidebar">
+    <div class="sidebar-title">Sarex Tech</div>
+
+    <ul class="sidebar-links">
+        <li>
+            <a href="index.html">
+                <img src="icons/dash.svg" alt="">
+                خانه
+            </a>
+        </li>
+
+        <li>
+            <a href="projects/projects.html">
+                <img src="icons/order.svg" alt="">
+                پروژه‌ها
+            </a>
+        </li>
+
+        <li>
+            <a href="service/service.html" src="icons/order.svg" alt="">
+                سرویس ها
+            </a>
+        </li>
+
+        <li>
+            <a href="#about">
+                <img src="icons/support.svg" alt="">
+                درباره ما
+            </a>
+        </li>
+
+        <li>
+            <a href="#contact">
+                <img src="icons/blog.svg" alt="">
+                تماس با ما
+            </a>
+        </li>
+
+        <li>
+            <a href="form/form.html">
+                <img src="icons/support.svg" alt="">
+                همکاری با ما
+            </a>
+        </li>
+    </ul>
+</aside>
+
+<div class="menu-toggle-btn">
+    <span></span>
+    <span></span>
+    <span></span>
+</div>
+
+<script>
+const logoContainer = document.querySelector('.logo-container');
+const menuToggleBtn = document.querySelector('.menu-toggle-btn');
+const sidebar = document.querySelector('.right-sidebar');
+const header = document.querySelector('header');
+
+function toggleMenu(e) {
+    e.preventDefault();
+
+    sidebar.classList.toggle('active');
+    logoContainer.classList.toggle('open');
+    menuToggleBtn.classList.toggle('open');
+    header.classList.toggle('menu-open');
+}
+
+menuToggleBtn.addEventListener('click', toggleMenu);
+logoContainer.addEventListener('click', toggleMenu);
+
+
+const canvas = document.getElementById('matrix-canvas');
+const ctx = canvas.getContext('2d');
+
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+}
+
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const chars = "01XØΔ79Z52W81010101";
+const fontSize = 15;
+
+let columns = canvas.width / fontSize;
+let drops = [];
+
+function initDrops() {
+    columns = canvas.width / fontSize;
+    drops = [];
+
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+}
+
+initDrops();
+window.addEventListener('resize', initDrops);
+
+function drawMatrix() {
+    ctx.fillStyle = 'rgba(4, 8, 20, 0.05)';
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = '#00f2fe';
+    ctx.font = fontSize + 'px monospace';
+
+    for (let i = 0; i < drops.length; i++) {
+        const text = chars.charAt(
+            Math.floor(Math.random() * chars.length)
+        );
+
+        ctx.fillText(
+            text,
+            i * fontSize,
+            drops[i] * fontSize
+        );
+
+        if (
+            drops[i] * fontSize > canvas.height &&
+            Math.random() > 0.975
+        ) {
+            drops[i] = 0;
+        }
+
+        drops[i]++;
+    }
+}
+
+let lastTime = 0;
+const fps = 30;
+const nextFrame = 1000 / fps;
+
+function updateMatrix(timestamp) {
+    if (!lastTime) {
+        lastTime = timestamp;
+    }
+
+    const elapsed = timestamp - lastTime;
+
+    if (elapsed > nextFrame) {
+        drawMatrix();
+        lastTime = timestamp - (elapsed % nextFrame);
+    }
+
+    requestAnimationFrame(updateMatrix);
+}
+
+requestAnimationFrame(updateMatrix);
+
+
+function updateLiveStats() {
+    const pingElement = document.getElementById('stat-ping');
+
+    if (pingElement) {
+        const randomPing =
+            Math.floor(Math.random() * (32 - 18 + 1)) + 18;
+
+        pingElement.innerText = randomPing + " ms";
+    }
+
+    const cpuElement = document.getElementById('stat-cpu');
+    const cpuBar = document.getElementById('bar-cpu');
+
+    if (cpuElement && cpuBar) {
+        const randomCpu =
+            Math.floor(Math.random() * (40 - 10 + 1)) + 10;
+
+        cpuElement.innerText = randomCpu + "%";
+        cpuBar.style.width = randomCpu + "%";
+
+        if (randomCpu > 32) {
+            cpuBar.style.background = 'var(--neon-purple)';
+            cpuBar.style.boxShadow = '0 0 8px var(--neon-purple)';
+        } else {
+            cpuBar.style.background =
+                'linear-gradient(90deg, var(--neon-blue), var(--neon-cyan))';
+
+            cpuBar.style.boxShadow =
+                '0 0 8px var(--neon-cyan)';
+        }
+    }
+
+    const ramElement = document.getElementById('stat-ram');
+    const ramBar = document.getElementById('bar-ram');
+
+    if (ramElement && ramBar) {
+        const randomRam =
+            (4.1 + Math.random() * 0.4).toFixed(1);
+
+        const ramPercentage =
+            Math.floor((randomRam / 16) * 100);
+
+        ramElement.innerText =
+            randomRam + " GB / 16 GB";
+
+        ramBar.style.width =
+            ramPercentage + "%";
+    }
+
+    const tempElement = document.getElementById('stat-temp');
+    const tempBar = document.getElementById('bar-temp');
+
+    if (tempElement && tempBar) {
+        const randomTemp =
+            Math.floor(Math.random() * (52 - 38 + 1)) + 38;
+
+        tempElement.innerText =
+            randomTemp + "°C";
+
+        tempBar.style.width =
+            randomTemp + "%";
+
+        if (randomTemp > 48) {
+            tempBar.style.background =
+                'var(--neon-purple)';
+        } else {
+            tempBar.style.background =
+                'linear-gradient(90deg, var(--neon-cyan), var(--neon-green))';
+        }
+    }
+
+    const networkElement =
+        document.getElementById('stat-network');
+
+    if (networkElement) {
+        const randomNetwork =
+            Math.floor(Math.random() * (190 - 95 + 1)) + 95;
+
+        networkElement.innerText =
+            randomNetwork + " Mbps";
+    }
+}
+
+setInterval(updateLiveStats, 1500);
+</script>
+
+</body>
+</html>
